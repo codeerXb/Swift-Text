@@ -156,7 +156,7 @@ extension XBTitleView {
         oldLable.textColor = titleStyle.textNormalColor
         newLable.textColor = titleStyle.textSeclectedColor
         currentIndex = newLable.tag
-        
+
         delegate?.titleView(titleView: self, selctedIndex: currentIndex)
         
         // 调整底部的线
@@ -181,7 +181,12 @@ extension XBTitleView {
     }
 }
 
-extension XBTitleView : titleViewDelegate {
+extension XBTitleView : XBContentViewDelegate {
+    
+    func contentview(contentView: XBContentView, endIndex: Int) {
+        
+    }
+    
     func titleView(titleView: XBTitleView, selctedIndex: Int) {
         // 取出lable
         let oldLable = titleLabs[currentIndex]
@@ -211,7 +216,7 @@ extension XBTitleView : titleViewDelegate {
         scrollView.setContentOffset(CGPoint(x:offsetX,y:0), animated: true)
     }
     
-    fileprivate func contentview(contentView : XBContentView,targetIndex :Int,progress : CGFloat) -> Void {
+     func contentview(contentView : XBContentView,targetIndex :Int,progress : CGFloat) -> Void {
         // 取出lable
         let oldLable = titleLabs[currentIndex]
         let newLable = titleLabs[targetIndex]
